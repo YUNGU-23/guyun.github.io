@@ -20,10 +20,9 @@ class Solution:
     @return: if a person could attend all meetings
     """
     def can_attend_meetings(self, intervals: List[Interval]) -> bool:
-        # sort and traversal intervals and if find newIntervals[i][0] < res[-1][1], they have intervals, return False
         # TC: O(nlogn), SC: O(n)
         if not intervals: return True
-        intervals.sort(key=lambda x: x.start)
+        intervals.sort(key=lambda x:x.start)
         for i in range(1, len(intervals)):
             if intervals[i].start < intervals[i-1].end:
                 return False
