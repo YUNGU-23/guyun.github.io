@@ -20,10 +20,9 @@ class Solution:
     @return: the minimum number of conference rooms required
     """
     def min_meeting_rooms(self, intervals: List[Interval]) -> int:
-        # if meet start point count ++, if meet end point count --, and keep update and compare the maxcount
-        # TC： O(nlogn), SC: O(n) 
-        if len(intervals) == 0: return 0
-        if len(intervals) == 1: return 1
+        # sort intervals to start and end array, and traversal start array, if start[s] < end[e], s ++, count ++, else e ++, count --, record the maxcount to res
+        # TC: O(n), SC: O(n)
+        if len(intervals) <= 1: return len(intervals)
         start = sorted([i.start for i in intervals])
         end = sorted([i.end for i in intervals])
         s, e, count, res = 0, 0, 0, 0
