@@ -8,7 +8,6 @@ class TreeNode(object):
         self.right = None
 """
 
-
 class Solution:
     """
     @param: root: The root of the BST.
@@ -16,12 +15,12 @@ class Solution:
     @return: Successor of p.
     """
     def inorderSuccessor(self, root, p):
-        # inorder iterative, use stack to find value and return next value
-        successor = None
+        # inorder iterative, TC: O(n), SC: O(1)
+        suc = None
         while root:
             if root.val > p.val:
-                successor = root
+                suc = root
                 root = root.left
             else:
                 root = root.right
-        return successor
+        return suc
